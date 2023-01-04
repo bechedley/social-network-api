@@ -3,8 +3,8 @@ const { Schema, model } = require('mongoose');
 // The reactionSchema defines the schema of the subdocument
 const reactionSchema = new Schema({
     reactionId: { 
-        type: mongoose.Types.ObjectId, 
-        default: new mongoose.Types.ObjectId(),
+        type: Schema.Types.ObjectId, 
+        default: new Schema.Types.ObjectId(),
     },
     reactionBody: {
         type: String,
@@ -13,6 +13,7 @@ const reactionSchema = new Schema({
     },
     username: {
         type: String,
+        ref: 'User',
         required: true,
     },
     createdAt: {
@@ -39,8 +40,9 @@ const thoughtSchema = new Schema(
       }`,
     },
     username: {
-      type: String,
-      required: true,
+        type: String,
+        ref: 'User',
+        required: true,
     },
     reactions: [reactionSchema],
   },
