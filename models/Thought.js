@@ -1,11 +1,12 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 
 // The reactionSchema defines the schema of the subdocument
 const reactionSchema = new Schema({
-    reactionId: { 
-        type: Schema.Types.ObjectId, 
-        default: new Schema.Types.ObjectId(),
-    },
+    reactionId: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        default: () => new Types.ObjectId(),
+      },
     reactionBody: {
         type: String,
         required: true,
@@ -22,6 +23,12 @@ const reactionSchema = new Schema({
         get: v => `${new Date(v).getMonth() + 1}/${new Date(v).getDate()}/${new Date(v).getFullYear()
         }`,
     },
+  },
+  {
+    toJSON: {
+      getters: true,
+    },
+    id: false,
   });
 
 // Schema to create Thought model
@@ -48,6 +55,7 @@ const thoughtSchema = new Schema(
   },
   {
     toJSON: {
+      getters: true,
       virtuals: true,
     },
     id: false,
@@ -55,7 +63,7 @@ const thoughtSchema = new Schema(
 );
 
 // Create a virtual property `reactionCount` that gets the amount of reactions associated with a thought
-applicationSchema
+thoughtSchema
   .virtual('reactionCount')
   // Getter
   .get(function () {
