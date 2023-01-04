@@ -12,10 +12,10 @@ N/A
 
 Run node.js to initiate the social network database. You can view and edit Users and Thoughts in the database by using the relevant api route and paramaters in Insomnia. Users can be added to and removed from a friends list, and reactions added to and removed from Thoughts, with the applicable POST and DELETE routes in Insomnia.
 
-Link to walkthrough video: (#)
+Link to walkthrough video: (https://watch.screencastify.com/v/6QxQY5VSSokXneyRuqpw)
 
 ![Screenshot of VS Code model](./assets/images/social-network-thought-model.png)
-![Screenshot of insomnia GET route](./assets/images/social-network-thought-model.png)
+![Screenshot of insomnia GET route](./assets/images/social-network-insomnia-routes.png)
 
 ## Credits
 
